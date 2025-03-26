@@ -239,7 +239,7 @@ const howManyVowels=(words)=>{
         totalVowels.push(vowel);
     }
     console.log(totalVowels);
-} //no pude:(
+} 
 howManyVowels(['Hola', 'Mundo', 'JavaScript']);
 
 //15 - Bego quiere que cada string en un array se muestre al revés.
