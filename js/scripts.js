@@ -32,7 +32,7 @@ const wordFilter=(words)=>{
     const newArray=[];
 
     for (const word  of words) {
-            if(vowels.includes(word.charAt(0).toUpperCase())){ //las vocales incluyen la primer letra en mayusccula?
+            if(vowels.includes(word.charAt(0).toUpperCase())){ //dentro de las vocales esta incluida la primer letra en mayusccula?
                 newArray.push(word);
             }  
     }
@@ -48,9 +48,9 @@ const calculateAvarage =(numbers)=>{
     let addition=0;
 
     for (const number of numbers) {
-        addition= addition+number;
+        addition+=number; //suma lo que tengo +x
     }
-    let avarage= addition/numbers.length;
+    const avarage= addition/numbers.length;
 
     console.log(`Promerio: ${avarage} - Total de elementos: ${numbers.length}`)
 }
@@ -165,8 +165,8 @@ numberClasificator([0, 3, 6, 9, 12, 0]);
 const  onlyNamesWithFourLetters=(names)=>{
     let positionNamesWith4Letters=[];
 
-    for (let i = 0; i <= names.length; i++) {
-        if(names.length[i]===4){
+    for (let i = 0; i < names.length; i++) {
+        if(names[i].length>5){ //names[i] la posicion del nombre, no del length
             positionNamesWith4Letters.push(i);
         }        
     }
@@ -183,7 +183,7 @@ const codeGenerator=(words)=>{
     let code="";
 
     for (const word of words) {
-        code=code+word.charAt(0);
+        code+=word.charAt(0);
     }
 
     console.log(code);
@@ -200,8 +200,8 @@ const whichNumberRepeats=()=>{
     let repeatedNumbers=[];
 
     for (let i = 0; i < numbers1.length; i++) {//debo revisar cada posicion y verificar si no se repite en el segundo array
-        if(numbers1.includes(numbers2[i])){ //ën este indice de numbers2, esta alguno de number1?
-            repeatedNumbers.push(numbers2[i]) //aaaah funciono con number 2, por?
+        if(numbers2.includes(numbers1[i])){ //dentro de number2 esta el i de number1?
+            repeatedNumbers.push(numbers1[i]) //agrega el number1
         }
     }
     console.log(repeatedNumbers);
@@ -219,7 +219,7 @@ const numbersInBetween=(numbers)=>{
     }
     console.log(numbersBetween);
 } //omg funcionoooo
-numbersInBetween([5,10]);
+numbersInBetween([2,10]); //como no viene en srting, lo detecta como numero y sabe los que estan en medio
 
 //14 - Macarena quiere un programa que devuelva el número total de vocales en cada palabra de un array.
 // Ejemplo entrada: ['Hola', 'Mundo', 'JavaScript']
@@ -228,17 +228,15 @@ numbersInBetween([5,10]);
 const howManyVowels=(words)=>{
     const vowels="AEIOUaeiou";
     let totalVowels=[];
-    let vowel=0; //contador de vocales
 
-    for (let i = 0; i < words.length; i++) {
-        // let vowel=0; //contador de vocales
-        for (const word of words) {
-            if (vowels.includes(word)){
-                vowel++;
+    for (let i = 0; i < words.length; i++) { //pudo ser con for of
+         let vowel=0; //contador de vocales, quiero vocales por palabra, termina la palabra y regresa a cero para la siguiente
+        for (const letter of words[i]) { //ahora reviso letras de cada palabra
+            if (vowels.includes(letter)){
+                vowel++; //termina la palabra, cuenta las vowels y las mete al array
             }
-        }
+        } 
         totalVowels.push(vowel);
-        
     }
     console.log(totalVowels);
 } //no pude:(
